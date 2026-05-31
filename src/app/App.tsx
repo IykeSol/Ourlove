@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform, useInView } from 'motion/react';
-import { Heart, Sparkles, Calendar, Mail, Volume2, VolumeX, Star, Gift } from 'lucide-react';
+import { Heart, Sparkles, Calendar, Mail, Volume2, VolumeX, Star, Gift, PartyPopper } from 'lucide-react';
 import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry';
 
 export default function App() {
@@ -36,29 +36,40 @@ export default function App() {
     {
       date: '',
       title: 'How It All Began',
-      story: 'It started with a blockchain assignment. We were working through it together, gisting and laughing the whole time — and somewhere in between the code and the conversation, I couldn\'t think of anything else. You clouded my head and my thinking, and I didn\'t mind one bit.',
+      story: 'Through a friend we both know, came to my place to meet up with the friend, and that day I knew I wanted more from you aside from the interesting conversation we had. With subsequent visits, I don’t know, I didn’t think I was ready to fall for someone, but I did. We talked, laughed, we were literally into each other from the start.',
       image: '/images/IMG-20260530-WA0057.jpg'
     },
     {
       date: '',
-      title: 'The Pepper Soup Date',
-      story: 'Hot pepper soup, warm laughter, and a table that felt too small for how big everything felt. That date showed me exactly who you are — someone who makes every ordinary moment feel like a celebration.',
+      title: 'Our Library Days',
+      story: 'Our library days have to be the memory I won’t be forgetting soonest. The reading together, the questioning, answering, the stares, and laughter. Studying together and helping you out with your academic problems was something I really loved doing at the time.',
       image: '/images/IMG-20260530-WA0055.jpg'
     },
     {
       date: '',
-      title: 'Movie Night & Every Gift In Between',
-      story: 'From the movie night to every thoughtful gift you\'ve placed in my hands — each one felt like you saying "I see you" without words. They are the most special moments of my life, and I treasure every single one.',
+      title: 'Every Moment Shared',
+      story: (
+        <span>
+          I loved every moment we shared; the midnight talks, seeing movies together, cooking together, singing and dancing together, our bets which you always lose (you're still owing me though)
+          <svg className="inline w-4 h-4 ml-1 text-yellow-500" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM8.5 8c.83 0 1.5.67 1.5 1.5S9.33 11 8.5 11 7 10.33 7 9.5 7.67 8 8.5 8zm7 0c.83 0 1.5.67 1.5 1.5S16.33 11 15.5 11 14 10.33 14 9.5 14.67 8 15.5 8zm-3.5 9.5c-2.33 0-4.31-1.46-5.11-3.5h10.22c-.8 2.04-2.78 3.5-5.11 3.5z"/>
+          </svg>
+          , the outings, our pepper soup outings too, our fights too
+          <svg className="inline w-4 h-4 ml-1 text-yellow-500" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM8.5 8c.83 0 1.5.67 1.5 1.5S9.33 11 8.5 11 7 10.33 7 9.5 7.67 8 8.5 8zm7 0c.83 0 1.5.67 1.5 1.5S16.33 11 15.5 11 14 10.33 14 9.5 14.67 8 15.5 8zm-3.5 9.5c-2.33 0-4.31-1.46-5.11-3.5h10.22c-.8 2.04-2.78 3.5-5.11 3.5z"/>
+          </svg>
+        </span>
+      ),
       image: '/images/IMG-20260530-WA0056.jpg'
     },
     {
-      date: 'May 30, 2025',
+      date: 'May 31, 2025',
       title: 'We Made It Official',
-      story: 'The day we stopped pretending this was anything other than love. May 30th — the day I got to call you mine, and you got to call me yours. Everything before this was just the universe getting us ready.',
+      story: 'The day we stopped pretending this was anything other than love. May 31st — the day I got to call you mine, and you got to call me yours. Everything before this was just the universe getting us ready.',
       image: '/images/IMG-20260530-WA0058.jpg'
     },
     {
-      date: 'May 30, 2026',
+      date: 'May 31, 2026',
       title: 'One Year — And I\'d Do It All Again',
       story: '365 days of choosing you. Of laughing until it hurts, growing together, and building something that feels like home. Happy anniversary, my love. This is just the beginning.',
       image: '/images/IMG-20260530-WA0064.jpg'
@@ -308,7 +319,7 @@ export default function App() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
           >
-            May 30, 2025 → May 30, 2026
+            May 31, 2025 → May 31, 2026
           </motion.p>
 
           <motion.h1
@@ -426,12 +437,12 @@ export default function App() {
                 <motion.div
                   key={idx}
                   className="cursor-pointer overflow-hidden rounded-xl"
-                  style={{ boxShadow: '0 4px 20px rgba(0,0,0,0.08)' }}
+                  style={{ boxShadow: '0 4px 20px rgba(0,0,0,0.08)', willChange: 'transform, opacity' }}
                   onClick={() => setSelectedImage(img)}
-                  initial={{ opacity: 0, scale: 0.92, y: 24 }}
-                  whileInView={{ opacity: 1, scale: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.15 }}
-                  transition={{ duration: 0.5, delay: (idx % 3) * 0.12, ease: 'easeOut' }}
+                  initial={{ opacity: 0, scale: 0.4, rotate: (idx % 2 === 0 ? -180 : 180), y: 60 }}
+                  whileInView={{ opacity: 1, scale: 1, rotate: 0, y: 0 }}
+                  viewport={{ once: true, amount: 0.1 }}
+                  transition={{ duration: 0.8, delay: (idx % 3) * 0.1, type: "spring", bounce: 0.3 }}
                   whileHover={{ scale: 1.03, boxShadow: '0 12px 40px rgba(162,103,105,0.18)' }}
                 >
                   <img
@@ -529,7 +540,7 @@ export default function App() {
           >
             <Mail className="w-10 h-10 mb-8" style={{ color: '#A26769' }} />
             <p className="text-sm uppercase tracking-widest mb-8" style={{ color: '#C6A972' }}>
-              May 30, 2026
+              May 31, 2026
             </p>
             <div className="space-y-6 leading-relaxed italic" style={{ color: '#555555', fontFamily: 'Georgia, serif', fontSize: '1.1rem' }}>
               <p>
@@ -775,22 +786,24 @@ function FloatingParticles() {
   const items = [
     { Icon: Heart, color: '#C6293A', fill: true },
     { Icon: Heart, color: '#A26769', fill: true },
+    { Icon: Heart, color: '#ff7eb3', fill: true },
+    { Icon: Heart, color: '#ff758c', fill: true },
+    { Icon: Heart, color: '#ff9a9e', fill: true },
+    { Icon: PartyPopper, color: '#f3c623', fill: false },
+    { Icon: PartyPopper, color: '#C6A972', fill: false },
     { Icon: Sparkles, color: '#C6A972', fill: false },
     { Icon: Star, color: '#C6A972', fill: true },
-    { Icon: Heart, color: '#e88a8a', fill: true },
     { Icon: Gift, color: '#A26769', fill: false },
-    { Icon: Star, color: '#C6293A', fill: false },
-    { Icon: Sparkles, color: '#e8a0a0', fill: false },
   ];
 
   return (
     <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
-      {Array.from({ length: 30 }).map((_, i) => {
+      {Array.from({ length: 80 }).map((_, i) => {
         const item = items[i % items.length];
-        const size = 12 + (i % 3) * 6;
-        const duration = 12 + (i % 7) * 3;
+        const size = 16 + (i % 3) * 8;
+        const duration = 10 + (i % 7) * 4;
         const startX = (i * 137.5) % 100;
-        const opacity = 0.08 + (i % 5) * 0.06;
+        const opacity = 0.15 + (i % 5) * 0.1;
         return (
           <motion.div
             key={i}
